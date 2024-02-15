@@ -1,0 +1,49 @@
+body {
+	display: grid;
+	grid-template-areas: 
+	"header header header"
+	"aside main main"
+	"footer footer footer";
+	grid-gap: 1rem;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto 100vh auto;
+
+	margin: 0;
+	padding: 0;
+}
+
+header, aside, main, footer {
+	background: #BC20E2;
+	color: #FDFDFD;
+}
+ 
+header {
+	grid-area: header;
+	padding: 2rem;
+}
+
+aside {
+	grid-area: aside;
+}
+
+main {
+	grid-area: main;
+}
+
+footer {
+	grid-area: footer;
+	padding: 1.5rem;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+dialog > form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
