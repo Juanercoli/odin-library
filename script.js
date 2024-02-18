@@ -8,9 +8,8 @@ createButton.addEventListener("click", (e) => {
 	const title = document.querySelector("#title").value;
 	const author = document.querySelector("#author").value;
 	const pages = document.querySelector("#pages").value;
-	const read = document.querySelector("#read").value; 
+	const read = document.querySelector("#read").checked; 
 	const book = new Book(title, author, pages, read); 
-	console.log
 	addBookToLibrary(book);
 	dialog.close();
 	displayBooks();
@@ -33,7 +32,6 @@ const book3 = new Book('The Lord of the Rings III', 'J.R.R Tolkien', 1556, false
 
 const myLibrary = [book1, book2, book3];
 
-addBookToLibrary(book1);
 displayBooks();
 
 function Book(title, author, pages, read) {
@@ -52,13 +50,20 @@ function displayBooks() {
 		deleteBtn.addEventListener("click", () => {
 			myLibrary.splice(index, 1);
 			displayBooks();
-			alert(JSON.stringify(element));
+		});
+
+		const readBtn = document.createElement("button");
+		readBtn.textContent = "Mark as read";
+		readBtn.addEventListener("click", () => {
+			myLibrary[index].read = !myLibrary[index].read;
+			displayBooks();
 		});
 
 		const bookDiv = document.createElement("div");
 		console.log(element);
 		bookDiv.innerText = JSON.stringify(element);
 		bookDiv.appendChild(deleteBtn);
+		bookDiv.appendChild(readBtn);
 		document.getElementById("main").appendChild(bookDiv);
 
 
